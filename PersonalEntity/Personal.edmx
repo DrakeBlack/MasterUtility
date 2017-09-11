@@ -1,0 +1,979 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PersonalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BilledTime">
+          <Key>
+            <PropertyRef Name="BilledTimeID" />
+          </Key>
+          <Property Name="BilledTimeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectCodeID" Type="int" Nullable="false" />
+          <Property Name="ProjectSubCodeID" Type="int" Nullable="false" />
+          <Property Name="BilledDate" Type="datetime" Nullable="false" />
+          <Property Name="BilledHours" Type="float" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="HolidayID" />
+          </Key>
+          <Property Name="HolidayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HolidayName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="HolidayDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Leave">
+          <Key>
+            <PropertyRef Name="LeaveID" />
+          </Key>
+          <Property Name="LeaveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LeaveTypeID" Type="int" Nullable="false" />
+          <Property Name="LeaveDate" Type="datetime" Nullable="false" />
+          <Property Name="LeaveHours" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LeaveType">
+          <Key>
+            <PropertyRef Name="LeaveTypeID" />
+          </Key>
+          <Property Name="LeaveTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LeaveTypeDescription" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhoneList">
+          <Key>
+            <PropertyRef Name="PhoneListID" />
+          </Key>
+          <Property Name="PhoneListID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Department" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProgramMessage">
+          <Key>
+            <PropertyRef Name="ProgramMessageID" />
+          </Key>
+          <Property Name="ProgramMessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="LevelCategory" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Sender" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Message" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProgramMessageException">
+          <Key>
+            <PropertyRef Name="ProgramMessageExceptionID" />
+          </Key>
+          <Property Name="ProgramMessageExceptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramMessageID" Type="int" Nullable="false" />
+          <Property Name="ExceptionOrder" Type="int" Nullable="false" />
+          <Property Name="ExceptionMessage" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectCode">
+          <Key>
+            <PropertyRef Name="ProjectCodeID" />
+          </Key>
+          <Property Name="ProjectCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectCode" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ProjectCodeDescription" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Personal.dbo.ProjectCodeSub' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProjectCodeSub">
+          <Key>
+            <PropertyRef Name="ProjectCodeID" />
+            <PropertyRef Name="ProjectSubCodeID" />
+          </Key>
+          <Property Name="ProjectCodeID" Type="int" Nullable="false" />
+          <Property Name="ProjectSubCodeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectSubCode">
+          <Key>
+            <PropertyRef Name="ProjectSubCodeID" />
+          </Key>
+          <Property Name="ProjectSubCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectSubCode" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ProjectSubCodeDescription" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TagName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TagType">
+          <Key>
+            <PropertyRef Name="TagTypeID" />
+          </Key>
+          <Property Name="TagTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TagTypeDescription" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TagValue">
+          <Key>
+            <PropertyRef Name="TagValueID" />
+          </Key>
+          <Property Name="TagValueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TagID" Type="int" Nullable="false" />
+          <Property Name="TagTypeID" Type="int" Nullable="false" />
+          <Property Name="TagKey" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Workflow">
+          <Key>
+            <PropertyRef Name="WorkflowID" />
+          </Key>
+          <Property Name="WorkflowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkflowDescription" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkflowBug">
+          <Key>
+            <PropertyRef Name="WorkflowBugID" />
+          </Key>
+          <Property Name="WorkflowBugID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkflowBugNumber" Type="int" Nullable="false" />
+          <Property Name="WorkflowBugDescription" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="WorkflowBugLink" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkflowNote">
+          <Key>
+            <PropertyRef Name="WorkflowNoteID" />
+          </Key>
+          <Property Name="WorkflowNoteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkflowID" Type="int" />
+          <Property Name="WorkflowStepID" Type="int" />
+          <Property Name="WorkflowBugID" Type="int" />
+          <Property Name="WorkflowDescription" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkflowStep">
+          <Key>
+            <PropertyRef Name="WorkflowStepID" />
+          </Key>
+          <Property Name="WorkflowStepID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkflowID" Type="int" Nullable="false" />
+          <Property Name="WorkflowStepStateID" Type="int" Nullable="false" />
+          <Property Name="WorkflowBugID" Type="int" />
+          <Property Name="StepDescription" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkflowStepState">
+          <Key>
+            <PropertyRef Name="WorkflowStepStateID" />
+          </Key>
+          <Property Name="WorkflowStepStateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkflowStepStateDescription" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BilledTime_ProjectCode">
+          <End Role="ProjectCode" Type="Self.ProjectCode" Multiplicity="1" />
+          <End Role="BilledTime" Type="Self.BilledTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectCode">
+              <PropertyRef Name="ProjectCodeID" />
+            </Principal>
+            <Dependent Role="BilledTime">
+              <PropertyRef Name="ProjectCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BilledTime_ProjectSubCode">
+          <End Role="ProjectSubCode" Type="Self.ProjectSubCode" Multiplicity="1" />
+          <End Role="BilledTime" Type="Self.BilledTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectSubCode">
+              <PropertyRef Name="ProjectSubCodeID" />
+            </Principal>
+            <Dependent Role="BilledTime">
+              <PropertyRef Name="ProjectSubCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_LeaveType">
+          <End Role="LeaveType" Type="Self.LeaveType" Multiplicity="1" />
+          <End Role="Leave" Type="Self.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LeaveType">
+              <PropertyRef Name="LeaveTypeID" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="LeaveTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramMessageException_ProgramMessage">
+          <End Role="ProgramMessage" Type="Self.ProgramMessage" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProgramMessageException" Type="Self.ProgramMessageException" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramMessage">
+              <PropertyRef Name="ProgramMessageID" />
+            </Principal>
+            <Dependent Role="ProgramMessageException">
+              <PropertyRef Name="ProgramMessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectCodeSub_ProjectCode">
+          <End Role="ProjectCode" Type="Self.ProjectCode" Multiplicity="1" />
+          <End Role="ProjectCodeSub" Type="Self.ProjectCodeSub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectCode">
+              <PropertyRef Name="ProjectCodeID" />
+            </Principal>
+            <Dependent Role="ProjectCodeSub">
+              <PropertyRef Name="ProjectCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectCodeSub_ProjectSubCode">
+          <End Role="ProjectSubCode" Type="Self.ProjectSubCode" Multiplicity="1" />
+          <End Role="ProjectCodeSub" Type="Self.ProjectCodeSub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectSubCode">
+              <PropertyRef Name="ProjectSubCodeID" />
+            </Principal>
+            <Dependent Role="ProjectCodeSub">
+              <PropertyRef Name="ProjectSubCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagValue_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TagValue" Type="Self.TagValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagID" />
+            </Principal>
+            <Dependent Role="TagValue">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkflowNote_Workflow">
+          <End Role="Workflow" Type="Self.Workflow" Multiplicity="0..1" />
+          <End Role="WorkflowNote" Type="Self.WorkflowNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workflow">
+              <PropertyRef Name="WorkflowID" />
+            </Principal>
+            <Dependent Role="WorkflowNote">
+              <PropertyRef Name="WorkflowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkflowNote_WorkflowBug">
+          <End Role="WorkflowBug" Type="Self.WorkflowBug" Multiplicity="0..1" />
+          <End Role="WorkflowNote" Type="Self.WorkflowNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkflowBug">
+              <PropertyRef Name="WorkflowBugID" />
+            </Principal>
+            <Dependent Role="WorkflowNote">
+              <PropertyRef Name="WorkflowBugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkflowNote_WorkflowStep">
+          <End Role="WorkflowStep" Type="Self.WorkflowStep" Multiplicity="0..1" />
+          <End Role="WorkflowNote" Type="Self.WorkflowNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkflowStep">
+              <PropertyRef Name="WorkflowStepID" />
+            </Principal>
+            <Dependent Role="WorkflowNote">
+              <PropertyRef Name="WorkflowStepID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkflowStep_Workflow">
+          <End Role="Workflow" Type="Self.Workflow" Multiplicity="1" />
+          <End Role="WorkflowStep" Type="Self.WorkflowStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workflow">
+              <PropertyRef Name="WorkflowID" />
+            </Principal>
+            <Dependent Role="WorkflowStep">
+              <PropertyRef Name="WorkflowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkflowStep_WorkflowBug">
+          <End Role="WorkflowBug" Type="Self.WorkflowBug" Multiplicity="0..1" />
+          <End Role="WorkflowStep" Type="Self.WorkflowStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkflowBug">
+              <PropertyRef Name="WorkflowBugID" />
+            </Principal>
+            <Dependent Role="WorkflowStep">
+              <PropertyRef Name="WorkflowBugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkflowStep_WorkflowStepState">
+          <End Role="WorkflowStepState" Type="Self.WorkflowStepState" Multiplicity="1" />
+          <End Role="WorkflowStep" Type="Self.WorkflowStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkflowStepState">
+              <PropertyRef Name="WorkflowStepStateID" />
+            </Principal>
+            <Dependent Role="WorkflowStep">
+              <PropertyRef Name="WorkflowStepStateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PersonalModelStoreContainer">
+          <EntitySet Name="BilledTime" EntityType="Self.BilledTime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leave" EntityType="Self.Leave" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LeaveType" EntityType="Self.LeaveType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhoneList" EntityType="Self.PhoneList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramMessage" EntityType="Self.ProgramMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramMessageException" EntityType="Self.ProgramMessageException" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectCode" EntityType="Self.ProjectCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectSubCode" EntityType="Self.ProjectSubCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TagType" EntityType="Self.TagType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TagValue" EntityType="Self.TagValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workflow" EntityType="Self.Workflow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkflowBug" EntityType="Self.WorkflowBug" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkflowNote" EntityType="Self.WorkflowNote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkflowStep" EntityType="Self.WorkflowStep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkflowStepState" EntityType="Self.WorkflowStepState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectCodeSub" EntityType="Self.ProjectCodeSub" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProjectCodeSub].[ProjectCodeID] AS [ProjectCodeID], 
+    [ProjectCodeSub].[ProjectSubCodeID] AS [ProjectSubCodeID]
+    FROM [dbo].[ProjectCodeSub] AS [ProjectCodeSub]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_BilledTime_ProjectCode" Association="Self.FK_BilledTime_ProjectCode">
+            <End Role="ProjectCode" EntitySet="ProjectCode" />
+            <End Role="BilledTime" EntitySet="BilledTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BilledTime_ProjectSubCode" Association="Self.FK_BilledTime_ProjectSubCode">
+            <End Role="ProjectSubCode" EntitySet="ProjectSubCode" />
+            <End Role="BilledTime" EntitySet="BilledTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_LeaveType" Association="Self.FK_Leave_LeaveType">
+            <End Role="LeaveType" EntitySet="LeaveType" />
+            <End Role="Leave" EntitySet="Leave" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramMessageException_ProgramMessage" Association="Self.FK_ProgramMessageException_ProgramMessage">
+            <End Role="ProgramMessage" EntitySet="ProgramMessage" />
+            <End Role="ProgramMessageException" EntitySet="ProgramMessageException" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectCodeSub_ProjectCode" Association="Self.FK_ProjectCodeSub_ProjectCode">
+            <End Role="ProjectCode" EntitySet="ProjectCode" />
+            <End Role="ProjectCodeSub" EntitySet="ProjectCodeSub" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectCodeSub_ProjectSubCode" Association="Self.FK_ProjectCodeSub_ProjectSubCode">
+            <End Role="ProjectSubCode" EntitySet="ProjectSubCode" />
+            <End Role="ProjectCodeSub" EntitySet="ProjectCodeSub" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagValue_Tag" Association="Self.FK_TagValue_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="TagValue" EntitySet="TagValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkflowNote_Workflow" Association="Self.FK_WorkflowNote_Workflow">
+            <End Role="Workflow" EntitySet="Workflow" />
+            <End Role="WorkflowNote" EntitySet="WorkflowNote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkflowNote_WorkflowBug" Association="Self.FK_WorkflowNote_WorkflowBug">
+            <End Role="WorkflowBug" EntitySet="WorkflowBug" />
+            <End Role="WorkflowNote" EntitySet="WorkflowNote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkflowNote_WorkflowStep" Association="Self.FK_WorkflowNote_WorkflowStep">
+            <End Role="WorkflowStep" EntitySet="WorkflowStep" />
+            <End Role="WorkflowNote" EntitySet="WorkflowNote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkflowStep_Workflow" Association="Self.FK_WorkflowStep_Workflow">
+            <End Role="Workflow" EntitySet="Workflow" />
+            <End Role="WorkflowStep" EntitySet="WorkflowStep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkflowStep_WorkflowBug" Association="Self.FK_WorkflowStep_WorkflowBug">
+            <End Role="WorkflowBug" EntitySet="WorkflowBug" />
+            <End Role="WorkflowStep" EntitySet="WorkflowStep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkflowStep_WorkflowStepState" Association="Self.FK_WorkflowStep_WorkflowStepState">
+            <End Role="WorkflowStepState" EntitySet="WorkflowStepState" />
+            <End Role="WorkflowStep" EntitySet="WorkflowStep" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PersonalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PhoneList">
+          <Key>
+            <PropertyRef Name="PhoneListID" />
+          </Key>
+          <Property Name="PhoneListID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="PersonalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PhoneLists" EntityType="Self.PhoneList" />
+          <EntitySet Name="ProjectCodes" EntityType="PersonalModel.ProjectCode" />
+          <EntitySet Name="ProjectSubCodes" EntityType="PersonalModel.ProjectSubCode" />
+          <AssociationSet Name="ProjectCodeSub" Association="PersonalModel.ProjectCodeSub">
+            <End Role="ProjectCode" EntitySet="ProjectCodes" />
+            <End Role="ProjectSubCode" EntitySet="ProjectSubCodes" />
+          </AssociationSet>
+          <EntitySet Name="BilledTimes" EntityType="PersonalModel.BilledTime" />
+          <AssociationSet Name="FK_BilledTime_ProjectCode" Association="PersonalModel.FK_BilledTime_ProjectCode">
+            <End Role="ProjectCode" EntitySet="ProjectCodes" />
+            <End Role="BilledTime" EntitySet="BilledTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BilledTime_ProjectSubCode" Association="PersonalModel.FK_BilledTime_ProjectSubCode">
+            <End Role="ProjectSubCode" EntitySet="ProjectSubCodes" />
+            <End Role="BilledTime" EntitySet="BilledTimes" />
+          </AssociationSet>
+          <EntitySet Name="ProgramMessages" EntityType="PersonalModel.ProgramMessage" />
+          <EntitySet Name="ProgramMessageExceptions" EntityType="PersonalModel.ProgramMessageException" />
+          <AssociationSet Name="FK_ProgramMessageException_ProgramMessage" Association="PersonalModel.FK_ProgramMessageException_ProgramMessage">
+            <End Role="ProgramMessage" EntitySet="ProgramMessages" />
+            <End Role="ProgramMessageException" EntitySet="ProgramMessageExceptions" />
+          </AssociationSet>
+          <EntitySet Name="Holidays" EntityType="PersonalModel.Holiday" />
+          <EntitySet Name="Leaves" EntityType="PersonalModel.Leave" />
+          <EntitySet Name="LeaveTypes" EntityType="PersonalModel.LeaveType" />
+          <AssociationSet Name="FK_Leave_LeaveType" Association="PersonalModel.FK_Leave_LeaveType">
+            <End Role="LeaveType" EntitySet="LeaveTypes" />
+            <End Role="Leave" EntitySet="Leaves" />
+          </AssociationSet>
+          <EntitySet Name="Tags" EntityType="PersonalModel.Tag" />
+          <EntitySet Name="TagValues" EntityType="PersonalModel.TagValue" />
+          <AssociationSet Name="FK_TagValue_Tag" Association="PersonalModel.FK_TagValue_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="TagValue" EntitySet="TagValues" />
+          </AssociationSet>
+          <EntitySet Name="TagTypes" EntityType="PersonalModel.TagType" />
+          <EntitySet Name="Workflows" EntityType="PersonalModel.Workflow" />
+          <EntitySet Name="WorkflowBugs" EntityType="PersonalModel.WorkflowBug" />
+          <EntitySet Name="WorkflowNotes" EntityType="PersonalModel.WorkflowNote" />
+          <EntitySet Name="WorkflowSteps" EntityType="PersonalModel.WorkflowStep" />
+          <EntitySet Name="WorkflowStepStates" EntityType="PersonalModel.WorkflowStepState" />
+          <AssociationSet Name="FK_WorkflowNote_Workflow" Association="PersonalModel.FK_WorkflowNote_Workflow">
+            <End Role="Workflow" EntitySet="Workflows" />
+            <End Role="WorkflowNote" EntitySet="WorkflowNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkflowStep_Workflow" Association="PersonalModel.FK_WorkflowStep_Workflow">
+            <End Role="Workflow" EntitySet="Workflows" />
+            <End Role="WorkflowStep" EntitySet="WorkflowSteps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkflowNote_WorkflowBug" Association="PersonalModel.FK_WorkflowNote_WorkflowBug">
+            <End Role="WorkflowBug" EntitySet="WorkflowBugs" />
+            <End Role="WorkflowNote" EntitySet="WorkflowNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkflowStep_WorkflowBug" Association="PersonalModel.FK_WorkflowStep_WorkflowBug">
+            <End Role="WorkflowBug" EntitySet="WorkflowBugs" />
+            <End Role="WorkflowStep" EntitySet="WorkflowSteps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkflowNote_WorkflowStep" Association="PersonalModel.FK_WorkflowNote_WorkflowStep">
+            <End Role="WorkflowStep" EntitySet="WorkflowSteps" />
+            <End Role="WorkflowNote" EntitySet="WorkflowNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkflowStep_WorkflowStepState" Association="PersonalModel.FK_WorkflowStep_WorkflowStepState">
+            <End Role="WorkflowStepState" EntitySet="WorkflowStepStates" />
+            <End Role="WorkflowStep" EntitySet="WorkflowSteps" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ProjectCode">
+          <Key>
+            <PropertyRef Name="ProjectCodeID" />
+          </Key>
+          <Property Name="ProjectCodeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectCodeValue" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectCodeDescription" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SubCodes" Relationship="PersonalModel.ProjectCodeSub" FromRole="ProjectCode" ToRole="ProjectSubCode" />
+          <NavigationProperty Name="BilledTimes" Relationship="PersonalModel.FK_BilledTime_ProjectCode" FromRole="ProjectCode" ToRole="BilledTime" />
+        </EntityType>
+        <EntityType Name="ProjectSubCode">
+          <Key>
+            <PropertyRef Name="ProjectSubCodeID" />
+          </Key>
+          <Property Name="ProjectSubCodeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectSubCodeValue" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectSubCodeDescription" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Codes" Relationship="PersonalModel.ProjectCodeSub" FromRole="ProjectSubCode" ToRole="ProjectCode" />
+          <NavigationProperty Name="BilledTimes" Relationship="PersonalModel.FK_BilledTime_ProjectSubCode" FromRole="ProjectSubCode" ToRole="BilledTime" />
+        </EntityType>
+        <Association Name="ProjectCodeSub">
+          <End Type="PersonalModel.ProjectCode" Role="ProjectCode" Multiplicity="*" />
+          <End Type="PersonalModel.ProjectSubCode" Role="ProjectSubCode" Multiplicity="*" />
+        </Association>
+        <EntityType Name="BilledTime">
+          <Key>
+            <PropertyRef Name="BilledTimeID" />
+          </Key>
+          <Property Name="BilledTimeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectCodeID" Type="Int32" Nullable="false" />
+          <Property Name="ProjectSubCodeID" Type="Int32" Nullable="false" />
+          <Property Name="BilledDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BilledHours" Type="Double" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProjectCode" Relationship="PersonalModel.FK_BilledTime_ProjectCode" FromRole="BilledTime" ToRole="ProjectCode" />
+          <NavigationProperty Name="ProjectSubCode" Relationship="PersonalModel.FK_BilledTime_ProjectSubCode" FromRole="BilledTime" ToRole="ProjectSubCode" />
+        </EntityType>
+        <Association Name="FK_BilledTime_ProjectCode">
+          <End Type="PersonalModel.ProjectCode" Role="ProjectCode" Multiplicity="1" />
+          <End Type="PersonalModel.BilledTime" Role="BilledTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectCode">
+              <PropertyRef Name="ProjectCodeID" />
+            </Principal>
+            <Dependent Role="BilledTime">
+              <PropertyRef Name="ProjectCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BilledTime_ProjectSubCode">
+          <End Type="PersonalModel.ProjectSubCode" Role="ProjectSubCode" Multiplicity="1" />
+          <End Type="PersonalModel.BilledTime" Role="BilledTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectSubCode">
+              <PropertyRef Name="ProjectSubCodeID" />
+            </Principal>
+            <Dependent Role="BilledTime">
+              <PropertyRef Name="ProjectSubCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProgramMessage">
+          <Key>
+            <PropertyRef Name="ProgramMessageID" />
+          </Key>
+          <Property Name="ProgramMessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LevelCategory" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Sender" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Exceptions" Relationship="PersonalModel.FK_ProgramMessageException_ProgramMessage" FromRole="ProgramMessage" ToRole="ProgramMessageException" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ProgramMessageException">
+          <Key>
+            <PropertyRef Name="ProgramMessageExceptionID" />
+          </Key>
+          <Property Name="ProgramMessageExceptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramMessageID" Type="Int32" Nullable="false" />
+          <Property Name="ExceptionMessage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProgramMessage" Relationship="PersonalModel.FK_ProgramMessageException_ProgramMessage" FromRole="ProgramMessageException" ToRole="ProgramMessage" />
+          <Property Name="ExceptionOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ProgramMessageException_ProgramMessage">
+          <End Type="PersonalModel.ProgramMessage" Role="ProgramMessage" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="PersonalModel.ProgramMessageException" Role="ProgramMessageException" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramMessage">
+              <PropertyRef Name="ProgramMessageID" />
+            </Principal>
+            <Dependent Role="ProgramMessageException">
+              <PropertyRef Name="ProgramMessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="HolidayID" />
+          </Key>
+          <Property Name="HolidayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HolidayName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HolidayDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Leave">
+          <Key>
+            <PropertyRef Name="LeaveID" />
+          </Key>
+          <Property Name="LeaveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LeaveTypeID" Type="Int32" Nullable="false" />
+          <Property Name="LeaveDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LeaveHours" Type="Double" Nullable="false" />
+          <NavigationProperty Name="LeaveType" Relationship="PersonalModel.FK_Leave_LeaveType" FromRole="Leave" ToRole="LeaveType" />
+        </EntityType>
+        <EntityType Name="LeaveType">
+          <Key>
+            <PropertyRef Name="LeaveTypeID" />
+          </Key>
+          <Property Name="LeaveTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LeaveTypeDescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Leaves" Relationship="PersonalModel.FK_Leave_LeaveType" FromRole="LeaveType" ToRole="Leave" />
+        </EntityType>
+        <Association Name="FK_Leave_LeaveType">
+          <End Type="PersonalModel.LeaveType" Role="LeaveType" Multiplicity="1" />
+          <End Type="PersonalModel.Leave" Role="Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LeaveType">
+              <PropertyRef Name="LeaveTypeID" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="LeaveTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TagName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Values" Relationship="PersonalModel.FK_TagValue_Tag" FromRole="Tag" ToRole="TagValue" />
+        </EntityType>
+        <EntityType Name="TagValue">
+          <Key>
+            <PropertyRef Name="TagValueID" />
+          </Key>
+          <Property Name="TagValueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TagID" Type="Int32" Nullable="false" />
+          <Property Name="TagTypeID" Type="Int32" Nullable="false" />
+          <Property Name="TagKey" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tag" Relationship="PersonalModel.FK_TagValue_Tag" FromRole="TagValue" ToRole="Tag" />
+        </EntityType>
+        <Association Name="FK_TagValue_Tag">
+          <End Type="PersonalModel.Tag" Role="Tag" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="PersonalModel.TagValue" Role="TagValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagID" />
+            </Principal>
+            <Dependent Role="TagValue">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TagType">
+          <Key>
+            <PropertyRef Name="TagTypeID" />
+          </Key>
+          <Property Name="TagTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TagTypeDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Workflow">
+          <Key>
+            <PropertyRef Name="WorkflowID" />
+          </Key>
+          <Property Name="WorkflowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkflowDescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Notes" Relationship="PersonalModel.FK_WorkflowNote_Workflow" FromRole="Workflow" ToRole="WorkflowNote" />
+          <NavigationProperty Name="Steps" Relationship="PersonalModel.FK_WorkflowStep_Workflow" FromRole="Workflow" ToRole="WorkflowStep" />
+        </EntityType>
+        <EntityType Name="WorkflowBug">
+          <Key>
+            <PropertyRef Name="WorkflowBugID" />
+          </Key>
+          <Property Name="WorkflowBugID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkflowBugNumber" Type="Int32" Nullable="false" />
+          <Property Name="WorkflowBugDescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="WorkflowBugLink" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Notes" Relationship="PersonalModel.FK_WorkflowNote_WorkflowBug" FromRole="WorkflowBug" ToRole="WorkflowNote" />
+          <NavigationProperty Name="Steps" Relationship="PersonalModel.FK_WorkflowStep_WorkflowBug" FromRole="WorkflowBug" ToRole="WorkflowStep" />
+        </EntityType>
+        <EntityType Name="WorkflowNote">
+          <Key>
+            <PropertyRef Name="WorkflowNoteID" />
+          </Key>
+          <Property Name="WorkflowNoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkflowID" Type="Int32" />
+          <Property Name="WorkflowStepID" Type="Int32" />
+          <Property Name="WorkflowBugID" Type="Int32" />
+          <Property Name="WorkflowDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Workflow" Relationship="PersonalModel.FK_WorkflowNote_Workflow" FromRole="WorkflowNote" ToRole="Workflow" />
+          <NavigationProperty Name="Bug" Relationship="PersonalModel.FK_WorkflowNote_WorkflowBug" FromRole="WorkflowNote" ToRole="WorkflowBug" />
+          <NavigationProperty Name="Step" Relationship="PersonalModel.FK_WorkflowNote_WorkflowStep" FromRole="WorkflowNote" ToRole="WorkflowStep" />
+        </EntityType>
+        <EntityType Name="WorkflowStep">
+          <Key>
+            <PropertyRef Name="WorkflowStepID" />
+          </Key>
+          <Property Name="WorkflowStepID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkflowID" Type="Int32" Nullable="false" />
+          <Property Name="WorkflowStepStateID" Type="Int32" Nullable="false" />
+          <Property Name="WorkflowBugID" Type="Int32" />
+          <Property Name="StepDescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Workflow" Relationship="PersonalModel.FK_WorkflowStep_Workflow" FromRole="WorkflowStep" ToRole="Workflow" />
+          <NavigationProperty Name="Bug" Relationship="PersonalModel.FK_WorkflowStep_WorkflowBug" FromRole="WorkflowStep" ToRole="WorkflowBug" />
+          <NavigationProperty Name="Notes" Relationship="PersonalModel.FK_WorkflowNote_WorkflowStep" FromRole="WorkflowStep" ToRole="WorkflowNote" />
+          <NavigationProperty Name="StepState" Relationship="PersonalModel.FK_WorkflowStep_WorkflowStepState" FromRole="WorkflowStep" ToRole="WorkflowStepState" />
+        </EntityType>
+        <EntityType Name="WorkflowStepState">
+          <Key>
+            <PropertyRef Name="WorkflowStepStateID" />
+          </Key>
+          <Property Name="WorkflowStepStateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkflowStepStateDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Steps" Relationship="PersonalModel.FK_WorkflowStep_WorkflowStepState" FromRole="WorkflowStepState" ToRole="WorkflowStep" />
+        </EntityType>
+        <Association Name="FK_WorkflowNote_Workflow">
+          <End Type="PersonalModel.Workflow" Role="Workflow" Multiplicity="0..1" />
+          <End Type="PersonalModel.WorkflowNote" Role="WorkflowNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workflow">
+              <PropertyRef Name="WorkflowID" />
+            </Principal>
+            <Dependent Role="WorkflowNote">
+              <PropertyRef Name="WorkflowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkflowStep_Workflow">
+          <End Type="PersonalModel.Workflow" Role="Workflow" Multiplicity="1" />
+          <End Type="PersonalModel.WorkflowStep" Role="WorkflowStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workflow">
+              <PropertyRef Name="WorkflowID" />
+            </Principal>
+            <Dependent Role="WorkflowStep">
+              <PropertyRef Name="WorkflowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkflowNote_WorkflowBug">
+          <End Type="PersonalModel.WorkflowBug" Role="WorkflowBug" Multiplicity="0..1" />
+          <End Type="PersonalModel.WorkflowNote" Role="WorkflowNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkflowBug">
+              <PropertyRef Name="WorkflowBugID" />
+            </Principal>
+            <Dependent Role="WorkflowNote">
+              <PropertyRef Name="WorkflowBugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkflowStep_WorkflowBug">
+          <End Type="PersonalModel.WorkflowBug" Role="WorkflowBug" Multiplicity="0..1" />
+          <End Type="PersonalModel.WorkflowStep" Role="WorkflowStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkflowBug">
+              <PropertyRef Name="WorkflowBugID" />
+            </Principal>
+            <Dependent Role="WorkflowStep">
+              <PropertyRef Name="WorkflowBugID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkflowNote_WorkflowStep">
+          <End Type="PersonalModel.WorkflowStep" Role="WorkflowStep" Multiplicity="0..1" />
+          <End Type="PersonalModel.WorkflowNote" Role="WorkflowNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkflowStep">
+              <PropertyRef Name="WorkflowStepID" />
+            </Principal>
+            <Dependent Role="WorkflowNote">
+              <PropertyRef Name="WorkflowStepID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkflowStep_WorkflowStepState">
+          <End Type="PersonalModel.WorkflowStepState" Role="WorkflowStepState" Multiplicity="1" />
+          <End Type="PersonalModel.WorkflowStep" Role="WorkflowStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkflowStepState">
+              <PropertyRef Name="WorkflowStepStateID" />
+            </Principal>
+            <Dependent Role="WorkflowStep">
+              <PropertyRef Name="WorkflowStepStateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PersonalModelStoreContainer" CdmEntityContainer="PersonalEntities">
+          <EntitySetMapping Name="PhoneLists">
+            <EntityTypeMapping TypeName="PersonalModel.PhoneList">
+              <MappingFragment StoreEntitySet="PhoneList">
+                <ScalarProperty Name="PhoneListID" ColumnName="PhoneListID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectCodes">
+            <EntityTypeMapping TypeName="PersonalModel.ProjectCode">
+              <MappingFragment StoreEntitySet="ProjectCode">
+                <ScalarProperty Name="ProjectCodeDescription" ColumnName="ProjectCodeDescription" />
+                <ScalarProperty Name="ProjectCodeValue" ColumnName="ProjectCode" />
+                <ScalarProperty Name="ProjectCodeID" ColumnName="ProjectCodeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectSubCodes">
+            <EntityTypeMapping TypeName="PersonalModel.ProjectSubCode">
+              <MappingFragment StoreEntitySet="ProjectSubCode">
+                <ScalarProperty Name="ProjectSubCodeDescription" ColumnName="ProjectSubCodeDescription" />
+                <ScalarProperty Name="ProjectSubCodeValue" ColumnName="ProjectSubCode" />
+                <ScalarProperty Name="ProjectSubCodeID" ColumnName="ProjectSubCodeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ProjectCodeSub" TypeName="PersonalModel.ProjectCodeSub" StoreEntitySet="ProjectCodeSub">
+            <EndProperty Name="ProjectSubCode">
+              <ScalarProperty Name="ProjectSubCodeID" ColumnName="ProjectSubCodeID" />
+            </EndProperty>
+            <EndProperty Name="ProjectCode">
+              <ScalarProperty Name="ProjectCodeID" ColumnName="ProjectCodeID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="BilledTimes">
+            <EntityTypeMapping TypeName="PersonalModel.BilledTime">
+              <MappingFragment StoreEntitySet="BilledTime">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="BilledHours" ColumnName="BilledHours" />
+                <ScalarProperty Name="BilledDate" ColumnName="BilledDate" />
+                <ScalarProperty Name="ProjectSubCodeID" ColumnName="ProjectSubCodeID" />
+                <ScalarProperty Name="ProjectCodeID" ColumnName="ProjectCodeID" />
+                <ScalarProperty Name="BilledTimeID" ColumnName="BilledTimeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramMessages">
+            <EntityTypeMapping TypeName="PersonalModel.ProgramMessage">
+              <MappingFragment StoreEntitySet="ProgramMessage">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="LevelCategory" ColumnName="LevelCategory" />
+                <ScalarProperty Name="ProgramMessageID" ColumnName="ProgramMessageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramMessageExceptions">
+            <EntityTypeMapping TypeName="PersonalModel.ProgramMessageException">
+              <MappingFragment StoreEntitySet="ProgramMessageException">
+                <ScalarProperty Name="ExceptionOrder" ColumnName="ExceptionOrder" />
+                <ScalarProperty Name="ExceptionMessage" ColumnName="ExceptionMessage" />
+                <ScalarProperty Name="ProgramMessageID" ColumnName="ProgramMessageID" />
+                <ScalarProperty Name="ProgramMessageExceptionID" ColumnName="ProgramMessageExceptionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Holidays">
+            <EntityTypeMapping TypeName="PersonalModel.Holiday">
+              <MappingFragment StoreEntitySet="Holiday">
+                <ScalarProperty Name="HolidayDate" ColumnName="HolidayDate" />
+                <ScalarProperty Name="HolidayName" ColumnName="HolidayName" />
+                <ScalarProperty Name="HolidayID" ColumnName="HolidayID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leaves">
+            <EntityTypeMapping TypeName="PersonalModel.Leave">
+              <MappingFragment StoreEntitySet="Leave">
+                <ScalarProperty Name="LeaveHours" ColumnName="LeaveHours" />
+                <ScalarProperty Name="LeaveDate" ColumnName="LeaveDate" />
+                <ScalarProperty Name="LeaveTypeID" ColumnName="LeaveTypeID" />
+                <ScalarProperty Name="LeaveID" ColumnName="LeaveID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeaveTypes">
+            <EntityTypeMapping TypeName="PersonalModel.LeaveType">
+              <MappingFragment StoreEntitySet="LeaveType">
+                <ScalarProperty Name="LeaveTypeDescription" ColumnName="LeaveTypeDescription" />
+                <ScalarProperty Name="LeaveTypeID" ColumnName="LeaveTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="PersonalModel.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="TagName" ColumnName="TagName" />
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TagValues">
+            <EntityTypeMapping TypeName="PersonalModel.TagValue">
+              <MappingFragment StoreEntitySet="TagValue">
+                <ScalarProperty Name="TagKey" ColumnName="TagKey" />
+                <ScalarProperty Name="TagTypeID" ColumnName="TagTypeID" />
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+                <ScalarProperty Name="TagValueID" ColumnName="TagValueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TagTypes">
+            <EntityTypeMapping TypeName="PersonalModel.TagType">
+              <MappingFragment StoreEntitySet="TagType">
+                <ScalarProperty Name="TagTypeDescription" ColumnName="TagTypeDescription" />
+                <ScalarProperty Name="TagTypeID" ColumnName="TagTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workflows">
+            <EntityTypeMapping TypeName="PersonalModel.Workflow">
+              <MappingFragment StoreEntitySet="Workflow">
+                <ScalarProperty Name="WorkflowDescription" ColumnName="WorkflowDescription" />
+                <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkflowBugs">
+            <EntityTypeMapping TypeName="PersonalModel.WorkflowBug">
+              <MappingFragment StoreEntitySet="WorkflowBug">
+                <ScalarProperty Name="WorkflowBugLink" ColumnName="WorkflowBugLink" />
+                <ScalarProperty Name="WorkflowBugDescription" ColumnName="WorkflowBugDescription" />
+                <ScalarProperty Name="WorkflowBugNumber" ColumnName="WorkflowBugNumber" />
+                <ScalarProperty Name="WorkflowBugID" ColumnName="WorkflowBugID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkflowNotes">
+            <EntityTypeMapping TypeName="PersonalModel.WorkflowNote">
+              <MappingFragment StoreEntitySet="WorkflowNote">
+                <ScalarProperty Name="WorkflowDescription" ColumnName="WorkflowDescription" />
+                <ScalarProperty Name="WorkflowBugID" ColumnName="WorkflowBugID" />
+                <ScalarProperty Name="WorkflowStepID" ColumnName="WorkflowStepID" />
+                <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+                <ScalarProperty Name="WorkflowNoteID" ColumnName="WorkflowNoteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkflowSteps">
+            <EntityTypeMapping TypeName="PersonalModel.WorkflowStep">
+              <MappingFragment StoreEntitySet="WorkflowStep">
+                <ScalarProperty Name="StepDescription" ColumnName="StepDescription" />
+                <ScalarProperty Name="WorkflowBugID" ColumnName="WorkflowBugID" />
+                <ScalarProperty Name="WorkflowStepStateID" ColumnName="WorkflowStepStateID" />
+                <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+                <ScalarProperty Name="WorkflowStepID" ColumnName="WorkflowStepID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkflowStepStates">
+            <EntityTypeMapping TypeName="PersonalModel.WorkflowStepState">
+              <MappingFragment StoreEntitySet="WorkflowStepState">
+                <ScalarProperty Name="WorkflowStepStateDescription" ColumnName="WorkflowStepStateDescription" />
+                <ScalarProperty Name="WorkflowStepStateID" ColumnName="WorkflowStepStateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

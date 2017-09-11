@@ -1,0 +1,481 @@
+﻿<Window
+    x:Class="RunAll.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:RunAll"
+    mc:Ignorable="d"
+    WindowStyle="None"
+    Title="Run All"
+    Height="1000"
+    Width="125"
+    AllowsTransparency="True"
+    Background="Transparent"
+    Left="0"
+    Top="0"
+    Loaded="Window_Loaded">
+	<Grid>
+		<StackPanel
+            Orientation="Vertical">
+			<Button
+				x:Name="button_Exit"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Exit"
+				Click="button_Click">
+			</Button>
+			<TextBlock
+				TextAlignment="Center"
+				Foreground="SlateGray">
+				<LineBreak/>
+				<Underline>
+				Version Control
+				</Underline>
+			</TextBlock>
+			<Button
+				x:Name="button_GetLatest"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Get Latest"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_SourceSafe"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Source Safe"
+				Click="button_Click">
+			</Button>
+			<TextBlock
+				TextAlignment="Center"
+				Foreground="SlateGray">
+				<LineBreak/>
+				<Underline>
+				Visual Studios
+				</Underline>
+			</TextBlock>
+			<Button
+				x:Name="button_VS_D21Server"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="D21 Server"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_D21Incident"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="D21 Incident"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_D21Admin"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="D21 Admin"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_D21DBUtil"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="D21 DB Util"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_DBConfigurator"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="DB Configurator"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_Angus"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Angus"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_AdminViewers"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Admin Viewers"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_Alpha"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Alpha"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_Gamma"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Gamma"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_Shared"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Shared"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_Controls"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Controls"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_AdvancedControls"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Advanced Controls"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_Dialogs"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Dialogs"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_AdvancedDialogs"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Advanced Dialogs"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_Reports"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Reports"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_Viewers"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Viewers"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_AdvancedViewers"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Advanced Viewers"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_AttributeViewers"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Attribute Viewers"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_VS_EntityViewers"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Entity Viewers"
+				Click="button_Click">
+			</Button>
+			<TextBlock
+				TextAlignment="Center"
+				Foreground="SlateGray">
+				<LineBreak/>
+				<Underline>
+				Programs
+				</Underline>
+			</TextBlock>
+			<Button
+				x:Name="button_D21Server"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="D21 Server"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_D21Incident"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="D21 Incident"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_D21Admin"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="D21 Admin"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_D21DBUtil"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="D21 DB Util"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_D21Config"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="D21 Config"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_DBConfigurator"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="DB Configurator"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_CodeSmith"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Code Smith"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_Angus"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Angus"
+				Click="button_Click">
+			</Button>
+			<Button
+				x:Name="button_PurpleRain"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				Background="Transparent"
+				BorderBrush="Transparent"
+				BorderThickness="0"
+				Foreground="SlateGray"
+				Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+				Content="Purple Rain"
+				Click="button_Click">
+			</Button>
+		</StackPanel>
+	</Grid>
+</Window>

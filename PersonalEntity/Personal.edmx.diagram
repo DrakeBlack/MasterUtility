@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7e8ebb13dba644a2bfefbbbe368cbf53" Name="Diagram1">
+        <EntityTypeShape EntityType="PersonalModel.PhoneList" Width="1.5" PointX="11.25" PointY="0.5" IsExpanded="true" FillColor="Black" />
+        <EntityTypeShape EntityType="PersonalModel.ProjectCode" Width="1.875" PointX="0.5" PointY="0.5" FillColor="Green" />
+        <EntityTypeShape EntityType="PersonalModel.ProjectSubCode" Width="2.25" PointX="2.75" PointY="0.5" FillColor="Green" />
+        <AssociationConnector Association="PersonalModel.ProjectCodeSub" />
+        <EntityTypeShape EntityType="PersonalModel.BilledTime" Width="1.875" PointX="1.625" PointY="3" FillColor="Green" />
+        <AssociationConnector Association="PersonalModel.FK_BilledTime_ProjectCode" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="PersonalModel.FK_BilledTime_ProjectSubCode" />
+        <EntityTypeShape EntityType="PersonalModel.ProgramMessage" Width="1.875" PointX="0.5" PointY="6" FillColor="DarkRed" />
+        <EntityTypeShape EntityType="PersonalModel.ProgramMessageException" Width="2.375" PointX="0.5" PointY="8.5" FillColor="DarkRed" />
+        <AssociationConnector Association="PersonalModel.FK_ProgramMessageException_ProgramMessage" />
+        <EntityTypeShape EntityType="PersonalModel.Holiday" Width="1.5" PointX="11.25" PointY="2.625" FillColor="Black" />
+        <EntityTypeShape EntityType="PersonalModel.Leave" Width="1.5" PointX="5.375" PointY="2.5" FillColor="Green" />
+        <EntityTypeShape EntityType="PersonalModel.LeaveType" Width="1.75" PointX="5.375" PointY="0.5" FillColor="Green" />
+        <AssociationConnector Association="PersonalModel.FK_Leave_LeaveType" />
+        <EntityTypeShape EntityType="PersonalModel.Tag" Width="1.5" PointX="9.25" PointY="0.5" FillColor="Gray" />
+        <EntityTypeShape EntityType="PersonalModel.TagValue" Width="1.5" PointX="9.25" PointY="2.625" FillColor="Gray" />
+        <AssociationConnector Association="PersonalModel.FK_TagValue_Tag" />
+        <EntityTypeShape EntityType="PersonalModel.TagType" Width="1.75" PointX="9.25" PointY="5" FillColor="Gray" />
+        <EntityTypeShape EntityType="PersonalModel.Workflow" Width="1.5" PointX="5.375" PointY="4.875" />
+        <EntityTypeShape EntityType="PersonalModel.WorkflowBug" Width="2" PointX="6.5" PointY="10.25" />
+        <EntityTypeShape EntityType="PersonalModel.WorkflowNote" Width="1.875" PointX="6.625" PointY="7.125" />
+        <EntityTypeShape EntityType="PersonalModel.WorkflowStep" Width="1.5" PointX="3.5" PointY="7.125" />
+        <EntityTypeShape EntityType="PersonalModel.WorkflowStepState" Width="2.375" PointX="3.5" PointY="10.25" />
+        <AssociationConnector Association="PersonalModel.FK_WorkflowNote_Workflow" />
+        <AssociationConnector Association="PersonalModel.FK_WorkflowStep_Workflow" />
+        <AssociationConnector Association="PersonalModel.FK_WorkflowNote_WorkflowBug" />
+        <AssociationConnector Association="PersonalModel.FK_WorkflowStep_WorkflowBug" />
+        <AssociationConnector Association="PersonalModel.FK_WorkflowNote_WorkflowStep" />
+        <AssociationConnector Association="PersonalModel.FK_WorkflowStep_WorkflowStepState" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

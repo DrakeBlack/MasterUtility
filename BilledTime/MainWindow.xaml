@@ -1,0 +1,52 @@
+﻿<Window
+	x:Class="BilledTime.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:BilledTime"
+	mc:Ignorable="d"
+	Loaded="Window_Loaded"
+	Title="Billed Time"
+	MinHeight="550"
+	Height="550"
+	MinWidth="1300"
+	Width="1300">
+	<Window.Resources>
+		<local:DateConverter x:Key="DateConverter"/>
+		<local:HourConverter x:Key="HourConverter"/>
+	</Window.Resources>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="200"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid
+			Grid.Column="0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+			<local:UserControl_Calendar
+				Grid.Row="0"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Top"
+				WeekSelected="UserControl_Calendar_WeekSelected"/>
+			<local:UserControl_BilledTime
+				x:Name="control_BilledTime"
+				BilledTimeDelete="control_BilledTime_BilledTimeDelete"
+				BilledTimeUpdate="control_BilledTime_BilledTimeUpdate"
+				BilledTimeEntity="{Binding Path=BilledTimeEntityEdit, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+				ProjectCodes="{Binding Path=ProjectCodeEntities, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+				Grid.Row="1"/>
+		</Grid>
+		<local:UserControl_Week
+			x:Name="week_01"
+			Grid.Column="1"
+			BilledTimeSelected="week_BilledTimeSelected"
+			LeavesGrouped="{Binding Path=LeavesGrouped, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+			DateBilledTimes="{Binding Path=DateGroupedBilledTimes, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Stretch"/>
+	</Grid>
+</Window>

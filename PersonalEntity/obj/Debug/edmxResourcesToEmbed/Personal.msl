@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PersonalModelStoreContainer" CdmEntityContainer="PersonalEntities">
+    <EntitySetMapping Name="PhoneLists">
+      <EntityTypeMapping TypeName="PersonalModel.PhoneList">
+        <MappingFragment StoreEntitySet="PhoneList">
+          <ScalarProperty Name="PhoneListID" ColumnName="PhoneListID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectCodes">
+      <EntityTypeMapping TypeName="PersonalModel.ProjectCode">
+        <MappingFragment StoreEntitySet="ProjectCode">
+          <ScalarProperty Name="ProjectCodeDescription" ColumnName="ProjectCodeDescription" />
+          <ScalarProperty Name="ProjectCodeValue" ColumnName="ProjectCode" />
+          <ScalarProperty Name="ProjectCodeID" ColumnName="ProjectCodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectSubCodes">
+      <EntityTypeMapping TypeName="PersonalModel.ProjectSubCode">
+        <MappingFragment StoreEntitySet="ProjectSubCode">
+          <ScalarProperty Name="ProjectSubCodeDescription" ColumnName="ProjectSubCodeDescription" />
+          <ScalarProperty Name="ProjectSubCodeValue" ColumnName="ProjectSubCode" />
+          <ScalarProperty Name="ProjectSubCodeID" ColumnName="ProjectSubCodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ProjectCodeSub" TypeName="PersonalModel.ProjectCodeSub" StoreEntitySet="ProjectCodeSub">
+      <EndProperty Name="ProjectSubCode">
+        <ScalarProperty Name="ProjectSubCodeID" ColumnName="ProjectSubCodeID" />
+      </EndProperty>
+      <EndProperty Name="ProjectCode">
+        <ScalarProperty Name="ProjectCodeID" ColumnName="ProjectCodeID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="BilledTimes">
+      <EntityTypeMapping TypeName="PersonalModel.BilledTime">
+        <MappingFragment StoreEntitySet="BilledTime">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="BilledHours" ColumnName="BilledHours" />
+          <ScalarProperty Name="BilledDate" ColumnName="BilledDate" />
+          <ScalarProperty Name="ProjectSubCodeID" ColumnName="ProjectSubCodeID" />
+          <ScalarProperty Name="ProjectCodeID" ColumnName="ProjectCodeID" />
+          <ScalarProperty Name="BilledTimeID" ColumnName="BilledTimeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProgramMessages">
+      <EntityTypeMapping TypeName="PersonalModel.ProgramMessage">
+        <MappingFragment StoreEntitySet="ProgramMessage">
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="LevelCategory" ColumnName="LevelCategory" />
+          <ScalarProperty Name="ProgramMessageID" ColumnName="ProgramMessageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProgramMessageExceptions">
+      <EntityTypeMapping TypeName="PersonalModel.ProgramMessageException">
+        <MappingFragment StoreEntitySet="ProgramMessageException">
+          <ScalarProperty Name="ExceptionOrder" ColumnName="ExceptionOrder" />
+          <ScalarProperty Name="ExceptionMessage" ColumnName="ExceptionMessage" />
+          <ScalarProperty Name="ProgramMessageID" ColumnName="ProgramMessageID" />
+          <ScalarProperty Name="ProgramMessageExceptionID" ColumnName="ProgramMessageExceptionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Holidays">
+      <EntityTypeMapping TypeName="PersonalModel.Holiday">
+        <MappingFragment StoreEntitySet="Holiday">
+          <ScalarProperty Name="HolidayDate" ColumnName="HolidayDate" />
+          <ScalarProperty Name="HolidayName" ColumnName="HolidayName" />
+          <ScalarProperty Name="HolidayID" ColumnName="HolidayID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Leaves">
+      <EntityTypeMapping TypeName="PersonalModel.Leave">
+        <MappingFragment StoreEntitySet="Leave">
+          <ScalarProperty Name="LeaveHours" ColumnName="LeaveHours" />
+          <ScalarProperty Name="LeaveDate" ColumnName="LeaveDate" />
+          <ScalarProperty Name="LeaveTypeID" ColumnName="LeaveTypeID" />
+          <ScalarProperty Name="LeaveID" ColumnName="LeaveID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeaveTypes">
+      <EntityTypeMapping TypeName="PersonalModel.LeaveType">
+        <MappingFragment StoreEntitySet="LeaveType">
+          <ScalarProperty Name="LeaveTypeDescription" ColumnName="LeaveTypeDescription" />
+          <ScalarProperty Name="LeaveTypeID" ColumnName="LeaveTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="PersonalModel.Tag">
+        <MappingFragment StoreEntitySet="Tag">
+          <ScalarProperty Name="TagName" ColumnName="TagName" />
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagValues">
+      <EntityTypeMapping TypeName="PersonalModel.TagValue">
+        <MappingFragment StoreEntitySet="TagValue">
+          <ScalarProperty Name="TagKey" ColumnName="TagKey" />
+          <ScalarProperty Name="TagTypeID" ColumnName="TagTypeID" />
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
+          <ScalarProperty Name="TagValueID" ColumnName="TagValueID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagTypes">
+      <EntityTypeMapping TypeName="PersonalModel.TagType">
+        <MappingFragment StoreEntitySet="TagType">
+          <ScalarProperty Name="TagTypeDescription" ColumnName="TagTypeDescription" />
+          <ScalarProperty Name="TagTypeID" ColumnName="TagTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workflows">
+      <EntityTypeMapping TypeName="PersonalModel.Workflow">
+        <MappingFragment StoreEntitySet="Workflow">
+          <ScalarProperty Name="WorkflowDescription" ColumnName="WorkflowDescription" />
+          <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowBugs">
+      <EntityTypeMapping TypeName="PersonalModel.WorkflowBug">
+        <MappingFragment StoreEntitySet="WorkflowBug">
+          <ScalarProperty Name="WorkflowBugLink" ColumnName="WorkflowBugLink" />
+          <ScalarProperty Name="WorkflowBugDescription" ColumnName="WorkflowBugDescription" />
+          <ScalarProperty Name="WorkflowBugNumber" ColumnName="WorkflowBugNumber" />
+          <ScalarProperty Name="WorkflowBugID" ColumnName="WorkflowBugID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowNotes">
+      <EntityTypeMapping TypeName="PersonalModel.WorkflowNote">
+        <MappingFragment StoreEntitySet="WorkflowNote">
+          <ScalarProperty Name="WorkflowDescription" ColumnName="WorkflowDescription" />
+          <ScalarProperty Name="WorkflowBugID" ColumnName="WorkflowBugID" />
+          <ScalarProperty Name="WorkflowStepID" ColumnName="WorkflowStepID" />
+          <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+          <ScalarProperty Name="WorkflowNoteID" ColumnName="WorkflowNoteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowSteps">
+      <EntityTypeMapping TypeName="PersonalModel.WorkflowStep">
+        <MappingFragment StoreEntitySet="WorkflowStep">
+          <ScalarProperty Name="StepDescription" ColumnName="StepDescription" />
+          <ScalarProperty Name="WorkflowBugID" ColumnName="WorkflowBugID" />
+          <ScalarProperty Name="WorkflowStepStateID" ColumnName="WorkflowStepStateID" />
+          <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+          <ScalarProperty Name="WorkflowStepID" ColumnName="WorkflowStepID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowStepStates">
+      <EntityTypeMapping TypeName="PersonalModel.WorkflowStepState">
+        <MappingFragment StoreEntitySet="WorkflowStepState">
+          <ScalarProperty Name="WorkflowStepStateDescription" ColumnName="WorkflowStepStateDescription" />
+          <ScalarProperty Name="WorkflowStepStateID" ColumnName="WorkflowStepStateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

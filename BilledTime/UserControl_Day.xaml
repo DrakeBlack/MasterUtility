@@ -1,0 +1,139 @@
+﻿<UserControl
+	x:Class="BilledTime.UserControl_Day"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:local="clr-namespace:BilledTime"
+	mc:Ignorable="d" 
+	Loaded="UserControl_Loaded"
+	MinHeight="250"
+	MinWidth="150"
+	d:DesignHeight="250"
+	d:DesignWidth="150">
+	<UserControl.Resources>
+		<local:DateConverter x:Key="DateConverter"/>
+		<local:HourConverter x:Key="HourConverter"/>
+	</UserControl.Resources>
+	<Border
+		BorderBrush="Black"
+		BorderThickness="1">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="25" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="100" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<Label
+				Grid.Row="0"
+				Grid.Column="0"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Left"
+				VerticalContentAlignment="Center"
+				FontWeight="Bold"
+				Content="{Binding Path=CurrentDate, Converter={StaticResource DateConverter}, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+			<Label
+				Grid.Row="0"
+				Grid.Column="1"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				HorizontalContentAlignment="Right"
+				VerticalContentAlignment="Center"
+				FontWeight="Bold"
+				Content="{Binding Path=TotalHours, Converter={StaticResource HourConverter}, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+			<DataGrid
+				x:Name="datagrid_BilledTimes"
+				Grid.Row="1"
+				Grid.Column="0"
+				Grid.ColumnSpan="2"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				ItemsSource="{Binding BilledTimeEntities, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+				SelectionUnit="FullRow"
+				SelectionMode="Single"
+				MouseLeftButtonUp="datagrid_BilledTimes_MouseLeftButtonUp"
+				AutoGenerateColumns="False"
+				CanUserReorderColumns="False"
+				CanUserResizeColumns="False"
+				CanUserResizeRows="False"
+				CanUserAddRows="False"
+				HeadersVisibility="Column"
+				IsReadOnly="True">
+				<DataGrid.Columns>
+					<DataGridTextColumn
+						Binding="{Binding CombinedProjectCodeDescription}"
+						Header="Project-Individual"
+						Width="*"/>
+					<DataGridTextColumn
+						Binding="{Binding BilledHours, Converter={StaticResource HourConverter}}"
+						Header="Hours"
+						Width="SizeToHeader"/>
+				</DataGrid.Columns>
+			</DataGrid>
+			<DataGrid
+				x:Name="datagrid_GroupedProjectCodeBilledTimes"
+				Grid.Row="2"
+				Grid.Column="0"
+				Grid.ColumnSpan="2"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				ItemsSource="{Binding ProjectGroupedBilledTimes, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+				SelectionUnit="FullRow"
+				SelectionMode="Single"
+				MouseLeftButtonUp="datagrid_GroupedProjectCodeBilledTimes_MouseLeftButtonUp"
+				AutoGenerateColumns="False"
+				CanUserReorderColumns="False"
+				CanUserResizeColumns="False"
+				CanUserResizeRows="False"
+				CanUserAddRows="False"
+				HeadersVisibility="Column"
+				IsReadOnly="True">
+				<DataGrid.Columns>
+					<DataGridTextColumn
+						Binding="{Binding CombinedProjectCodeDescription}"
+						Header="Project-Grouped"
+						Width="*"/>
+					<DataGridTextColumn
+						Binding="{Binding TotalHours, Converter={StaticResource HourConverter}}"
+						Header="Hours"
+						Width="SizeToHeader"/>
+				</DataGrid.Columns>
+			</DataGrid>
+			<DataGrid
+				x:Name="datagrid_Leave"
+				Grid.Row="3"
+				Grid.Column="0"
+				Grid.ColumnSpan="2"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				ItemsSource="{Binding LeavesEntities, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+				SelectionUnit="FullRow"
+				SelectionMode="Single"
+				MouseLeftButtonUp="datagrid_Leave_MouseLeftButtonUp"
+				AutoGenerateColumns="False"
+				CanUserReorderColumns="False"
+				CanUserResizeColumns="False"
+				CanUserResizeRows="False"
+				CanUserAddRows="False"
+				HeadersVisibility="Column"
+				IsReadOnly="True">
+				<DataGrid.Columns>
+					<DataGridTextColumn
+						Binding="{Binding LeaveTypeDescription}"
+						Header="Leave Type"
+						Width="*"/>
+					<DataGridTextColumn
+						Binding="{Binding LeaveHours, Converter={StaticResource HourConverter}}"
+						Header="Hours"
+						Width="SizeToHeader"/>
+				</DataGrid.Columns>
+			</DataGrid>
+		</Grid>
+	</Border>
+</UserControl>

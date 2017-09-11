@@ -1,0 +1,14 @@
+2017-09-08 15:49:10
+Level: Exception
+Sender: button_XMLFormat_OpenFile_Click.MainWindow
+Message: Cannot Format XML
+Exception: XMLFormat_Results_Add.MainWindow
+Exception: Object reference not set to an instance of an object.
+
+2017-09-08 15:49:49
+Level: Exception
+Sender: button_XMLFormat_OpenFile_Click.MainWindow
+Message: Cannot Format XML
+Exception: XMLFormat_Results_Add.MainWindow
+Exception: Object reference not set to an instance of an object.
+

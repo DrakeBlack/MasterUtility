@@ -1,0 +1,622 @@
+﻿<Window
+	x:Class="MasterUtility.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:MasterUtility"
+	mc:Ignorable="d"
+	Loaded="Window_Loaded"
+	FontFamily="Consolas"
+	FontSize="12"
+	Title="Master Utility"
+	Height="600"
+	MinHeight="600"
+	Width="800"
+	MinWidth="800">
+	<Grid>
+		<TabControl
+			x:Name="tabcontrol_Main"
+			TabStripPlacement="Left"
+			SelectionChanged="tabcontrol_Main_SelectionChanged">
+			<TabItem
+				x:Name="tabitem_RunPrograms"
+				Header="Run Programs"
+				Padding="10">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+					<TextBlock
+						x:Name="textblock_RunPrograms_VersionControl_Header"
+						Grid.Row="0"
+						Grid.Column="0"
+						Margin="2">
+						<Underline>
+							Version Control
+						</Underline>
+					</TextBlock>
+					<Button
+						x:Name="button_RunPrograms_VersionControl_GetLatest"
+						Grid.Row="1"
+						Grid.Column="0"
+						Content="Get Latest"
+						Margin="2"
+						Click="button_RunPrograms_VersionControl_GetLatest_Click"/>
+					<Button
+						x:Name="button_RunPrograms_VersionControl_SourceSafe"
+						Grid.Row="2"
+						Grid.Column="0"
+						Content="Source Safe"
+						Margin="2"
+						Click="button_RunPrograms_VersionControl_SourceSafe_Click"/>
+					<TextBlock
+						x:Name="textblock_RunPrograms_D21VisualStudios_Header"
+						Grid.Row="0"
+						Grid.Column="1"
+						Margin="2">
+						<Underline>
+							D21 Visual Studios
+						</Underline>
+					</TextBlock>
+					<Button
+						x:Name="button_RunPrograms_D21VisualStudios_D21Server"
+						Grid.Row="1"
+						Grid.Column="1"
+						Content="D21 Server"
+						Margin="2"
+						Click="button_RunPrograms_D21VisualStudios_D21Server_Click"/>
+					<Button
+						x:Name="button_RunPrograms_D21VisualStudios_D21Incident"
+						Grid.Row="2"
+						Grid.Column="1"
+						Content="D21 Incident"
+						Margin="2"
+						Click="button_RunPrograms_D21VisualStudios_D21Incident_Click"/>
+					<Button
+						x:Name="button_RunPrograms_D21VisualStudios_D21Admin"
+						Grid.Row="3"
+						Grid.Column="1"
+						Content="D21 Admin"
+						Margin="2"
+						Click="button_RunPrograms_D21VisualStudios_D21Admin_Click"/>
+					<Button
+						x:Name="button_RunPrograms_D21VisualStudios_D21DBUtility"
+						Grid.Row="4"
+						Grid.Column="1"
+						Content="D21 DB Utility"
+						Margin="2"
+						Click="button_RunPrograms_D21VisualStudios_D21DBUtility_Click"/>
+					<TextBlock
+						x:Name="textblock_RunPrograms_EMVisualStudios_Header"
+						Grid.Row="0"
+						Grid.Column="2"
+						Margin="2">
+						<Underline>
+							EM Visual Studios
+						</Underline>
+					</TextBlock>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_DBConfigurator"
+						Grid.Row="1"
+						Grid.Column="2"
+						Content="DB Configurator"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_DBConfigurator_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_Alpha"
+						Grid.Row="2"
+						Grid.Column="2"
+						Content="Alpha"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_Alpha_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_Gamma"
+						Grid.Row="3"
+						Grid.Column="2"
+						Content="Gamma"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_Gamma_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_Shared"
+						Grid.Row="4"
+						Grid.Column="2"
+						Content="Shared"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_Shared_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_Controls"
+						Grid.Row="5"
+						Grid.Column="2"
+						Content="Controls"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_Controls_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_AdvancedControls"
+						Grid.Row="6"
+						Grid.Column="2"
+						Content="Advanced Controls"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_AdvancedControls_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_Dialogs"
+						Grid.Row="7"
+						Grid.Column="2"
+						Content="Controls"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_Dialogs_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_AdvancedDialogs"
+						Grid.Row="8"
+						Grid.Column="2"
+						Content="Advanced Dialogs"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_AdvancedDialogs_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_Reports"
+						Grid.Row="9"
+						Grid.Column="2"
+						Content="Reports"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_Reports_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_Viewers"
+						Grid.Row="10"
+						Grid.Column="2"
+						Content="Viewers"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_Viewers_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_AdvancedViewers"
+						Grid.Row="11"
+						Grid.Column="2"
+						Content="Advanced Viewers"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_AdvancedViewers_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_AdminViewers"
+						Grid.Row="12"
+						Grid.Column="2"
+						Content="AdminViewers"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_AdminViewers_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_AttributeViewers"
+						Grid.Row="13"
+						Grid.Column="2"
+						Content="Attribute Viewers"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_AttributeViewers_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_EntityViewers"
+						Grid.Row="14"
+						Grid.Column="2"
+						Content="Entity Viewers"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_EntityViewers_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMVisualStudios_Angus"
+						Grid.Row="15"
+						Grid.Column="2"
+						Content="Angus"
+						Margin="2"
+						Click="button_RunPrograms_EMVisualStudios_Angus_Click"/>
+					<TextBlock
+						x:Name="textblock_RunPrograms_UtilityExecutable_Header"
+						Grid.Row="16"
+						Grid.Column="0"
+						Margin="2">
+						<Underline>
+							Utility Executables
+						</Underline>
+					</TextBlock>
+					<Button
+						x:Name="button_RunPrograms_UtilityExecutable_Calculator"
+						Grid.Row="17"
+						Grid.Column="0"
+						Content="Calculator"
+						Margin="2"
+						Click="button_RunPrograms_UtilityExecutable_Calculator_Click"/>
+					<TextBlock
+						x:Name="textblock_RunPrograms_D21Executable_Header"
+						Grid.Row="16"
+						Grid.Column="1"
+						Margin="2">
+						<Underline>
+							D21 Executables
+						</Underline>
+					</TextBlock>
+					<Button
+						x:Name="button_RunPrograms_D21Executable_D21Server"
+						Grid.Row="17"
+						Grid.Column="1"
+						Content="D21 Server"
+						Margin="2"
+						Click="button_RunPrograms_D21Executable_D21Server_Click"/>
+					<Button
+						x:Name="button_RunPrograms_D21Executable_D21Incident"
+						Grid.Row="18"
+						Grid.Column="1"
+						Content="D21 Incident"
+						Margin="2"
+						Click="button_RunPrograms_D21Executable_D21Incident_Click"/>
+					<Button
+						x:Name="button_RunPrograms_D21Executable_D21Admin"
+						Grid.Row="19"
+						Grid.Column="1"
+						Content="D21 Admin"
+						Margin="2"
+						Click="button_RunPrograms_D21Executable_D21Admin_Click"/>
+					<Button
+						x:Name="button_RunPrograms_D21Executable_D21DBUtility"
+						Grid.Row="20"
+						Grid.Column="1"
+						Content="D21 DB Utility"
+						Margin="2"
+						Click="button_RunPrograms_D21Executable_D21DBUtility_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMExecutable_D21Config"
+						Grid.Row="21"
+						Grid.Column="1"
+						Content="D21 Config"
+						Margin="2"
+						Click="button_RunPrograms_EMExecutable_D21Config_Click"/>
+					<TextBlock
+						x:Name="textblock_RunPrograms_EMExecutable_Header"
+						Grid.Row="16"
+						Grid.Column="2"
+						Margin="2">
+						<Underline>
+							EM Executables
+						</Underline>
+					</TextBlock>
+					<Button
+						x:Name="button_RunPrograms_EMExecutable_DBConfigurator"
+						Grid.Row="17"
+						Grid.Column="2"
+						Content="DB Configurator"
+						Margin="2"
+						Click="button_RunPrograms_EMExecutable_DBConfigurator_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMExecutable_Angus"
+						Grid.Row="18"
+						Grid.Column="2"
+						Content="Angus"
+						Margin="2"
+						Click="button_RunPrograms_EMExecutable_Angus_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMExecutable_PurpleRain"
+						Grid.Row="19"
+						Grid.Column="2"
+						Content="Purple Rain"
+						Margin="2"
+						Click="button_RunPrograms_EMExecutable_PurpleRain_Click"/>
+					<Button
+						x:Name="button_RunPrograms_EMExecutable_CodeSmith"
+						Grid.Row="20"
+						Grid.Column="2"
+						Content="Code Smith"
+						Margin="2"
+						Click="button_RunPrograms_EMExecutable_CodeSmith_Click"/>
+					<TextBlock
+						x:Name="textblock_RunPrograms_Other_Header"
+						Grid.Row="0"
+						Grid.Column="3"
+						Margin="2">
+						<Underline>
+							Other
+						</Underline>
+					</TextBlock>
+				</Grid>
+			</TabItem>
+			<TabItem
+				x:Name="tabitem_ProjectCodeAdmin"
+				Header="Project Code Admin"
+				Padding="10">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+					<Label
+						x:Name="label_ProjectCodeAdmin_Value_Header"
+						Grid.Row="0"
+						Grid.Column="0"
+						Content="Value:"/>
+					<TextBox
+						x:Name="textbox_ProjectCodeAdmin_Value"
+						Grid.Row="0"
+						Grid.Column="1"
+						Margin="2">
+					</TextBox>
+					<Label
+						x:Name="label_ProjectCodeAdmin_Description_Header"
+						Grid.Row="1"
+						Grid.Column="0"
+						Content="Description:"/>
+					<TextBox
+						x:Name="textbox_ProjectCodeAdmin_Description"
+						Grid.Row="1"
+						Grid.Column="1"
+						Margin="2">
+					</TextBox>
+					<Button
+						x:Name="button_ProjectCodeAdmin_Save"
+						Grid.Row="0"
+						Grid.Column="2"
+						Content="Save"
+						Margin="2"
+						Click="button_ProjectCodeAdmin_Save_Click"/>
+					<Button
+						x:Name="button_ProjectCodeAdmin_Delete"
+						Grid.Row="1"
+						Grid.Column="2"
+						Content="Delete"
+						Margin="2"
+						Click="button_ProjectCodeAdmin_Delete_Click"/>
+					<DataGrid
+						x:Name="datagrid_ProjectCodeAdmin_ProjectCodes"
+						Grid.Row="2"
+						Grid.Column="0"
+						Grid.ColumnSpan="3"
+						Margin="0,2,0,0"
+						AutoGenerateColumns="False"
+						IsReadOnly="True"
+						VerticalScrollBarVisibility="Visible"
+						SelectionChanged="datagrid_ProjectCodeAdmin_ProjectCodes_SelectionChanged"
+						CanUserReorderColumns="False"
+						CanUserResizeColumns="False"
+						CanUserResizeRows="False"
+						CanUserSortColumns="False"
+						ItemsSource="{Binding ProjectCodeAdmin_ProjectCodes}">
+						<DataGrid.Columns>
+							<DataGridTextColumn
+								Binding="{Binding ProjectCodeValue}"
+								Header="Value"
+								Width="100">
+							</DataGridTextColumn>
+							<DataGridTextColumn
+								Binding="{Binding ProjectCodeDescription}"
+								Header="Description"
+								Width="*">
+							</DataGridTextColumn>
+						</DataGrid.Columns>
+					</DataGrid>
+					<Label
+						x:Name="label_ProjectCodeAdmin_SubValue_Header"
+						Grid.Row="3"
+						Grid.Column="0"
+						Content="Value:"/>
+					<TextBox
+						x:Name="textbox_ProjectCodeAdmin_SubValue"
+						Grid.Row="3"
+						Grid.Column="1"
+						Margin="2">
+					</TextBox>
+					<Label
+						x:Name="label_ProjectCodeAdmin_SubDescription_Header"
+						Grid.Row="4"
+						Grid.Column="0"
+						Content="Description:"/>
+					<TextBox
+						x:Name="textbox_ProjectCodeAdmin_SubDescription"
+						Grid.Row="4"
+						Grid.Column="1"
+						Margin="2">
+					</TextBox>
+					<Button
+						x:Name="button_ProjectCodeAdmin_SubSave"
+						Grid.Row="3"
+						Grid.Column="2"
+						Content="Save"
+						Margin="2"
+						Click="button_ProjectCodeAdmin_SubSave_Click"/>
+					<Button
+						x:Name="button_ProjectCodeAdmin_SubDelete"
+						Grid.Row="4"
+						Grid.Column="2"
+						Content="Delete"
+						Margin="2"
+						Click="button_ProjectCodeAdmin_SubDelete_Click"/>
+					<DataGrid
+						x:Name="datagrid_ProjectCodeAdmin_ProjectSubCodes"
+						Grid.Row="5"
+						Grid.Column="0"
+						Grid.ColumnSpan="3"
+						Margin="0,2,0,0"
+						AutoGenerateColumns="False"
+						VerticalScrollBarVisibility="Visible"
+						SelectionChanged="datagrid_ProjectCodeAdmin_ProjectSubCodes_SelectionChanged"
+						CanUserReorderColumns="False"
+						CanUserResizeColumns="False"
+						CanUserResizeRows="False"
+						CanUserSortColumns="False"
+						ItemsSource="{Binding ProjectCodeAdmin_ProjectSubCodesUsed}">
+						<DataGrid.Columns>
+							<DataGridCheckBoxColumn
+								Binding="{Binding ProjectSubCodeUsed, UpdateSourceTrigger=PropertyChanged}"
+								Header="Used"
+								Width="30">
+							</DataGridCheckBoxColumn>
+							<DataGridTextColumn
+								Binding="{Binding ProjectSubCodeValue}"
+								IsReadOnly="True"
+								Header="Value"
+								Width="100">
+							</DataGridTextColumn>
+							<DataGridTextColumn
+								Binding="{Binding ProjectSubCodeDescription}"
+								IsReadOnly="True"
+								Header="Description"
+								Width="*">
+							</DataGridTextColumn>
+						</DataGrid.Columns>
+					</DataGrid>
+				</Grid>
+			</TabItem>
+			<TabItem
+				x:Name="tabitem_BilledTime"
+				Header="Billed Time"
+				Padding="10">
+
+			</TabItem>
+			<TabItem
+				x:Name="tabitem_LeaveTime"
+				Header="Leave Time"
+				Padding="10">
+
+			</TabItem>
+			<TabItem
+				x:Name="tabitem_TimeSheet"
+				Header="Time Sheet"
+				Padding="10">
+
+			</TabItem>
+			<TabItem
+				x:Name="tabitem_EmployeeList"
+				Header="Employee List"
+				Padding="10">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<Label
+						x:Name="label_EmployeeList_Search_Header"
+						Grid.Row="0"
+						Grid.Column="0"
+						Content="Search:"/>
+					<TextBox
+						x:Name="textbox_EmployeeList_Search"
+						Grid.Row="0"
+						Grid.Column="1"
+						TextChanged="textbox_EmployeeList_Search_TextChanged">
+					</TextBox>
+					<DataGrid
+						x:Name="datagrid_EmployeeList"
+						Grid.Row="1"
+						Grid.Column="0"
+						Grid.ColumnSpan="2"
+						Margin="0,2,0,0"
+						AutoGenerateColumns="False"
+						IsReadOnly="True"
+						VerticalScrollBarVisibility="Visible"
+						CanUserReorderColumns="False"
+						CanUserResizeColumns="False"
+						CanUserResizeRows="False"
+						CanUserSortColumns="False"
+						ItemsSource="{Binding EmployeeList_Searched}">
+						<DataGrid.Columns>
+							<DataGridTextColumn
+								Binding="{Binding PhoneNumber}"
+								Header="Number"
+								Width="100">
+							</DataGridTextColumn>
+							<DataGridTextColumn
+								Binding="{Binding Name}"
+								Header="Name"
+								Width="200">
+							</DataGridTextColumn>
+							<DataGridTextColumn
+								Binding="{Binding Department}"
+								Header="Department"
+								Width="*">
+							</DataGridTextColumn>
+						</DataGrid.Columns>
+					</DataGrid>
+				</Grid>
+			</TabItem>
+			<TabItem
+				x:Name="tabitem_XMLFormat"
+				Header="XML Format"
+				Padding="10">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<Button
+						x:Name="button_XMLFormat_OpenFile"
+						Content="Format"
+						Click="button_XMLFormat_OpenFile_Click"/>
+					<Label
+						x:Name="label_XMLFormat_FileName"
+						Grid.Row="0"
+						Grid.Column="1"
+						VerticalContentAlignment="Center"/>
+					<DataGrid
+						x:Name="datagrid_XMLFormat_Results"
+						Grid.Row="1"
+						Grid.Column="0"
+						Grid.ColumnSpan="2"
+						Margin="0,2,0,0"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						HeadersVisibility="None"
+						GridLinesVisibility="None"
+						AutoGenerateColumns="False"
+						IsReadOnly="True"
+						VerticalScrollBarVisibility="Visible"
+						CanUserReorderColumns="False"
+						CanUserResizeColumns="False"
+						CanUserResizeRows="False"
+						CanUserSortColumns="False"
+						ItemsSource="{Binding XMLFormat_Results}">
+						<DataGrid.Columns>
+							<DataGridTextColumn
+								Binding="{Binding}"
+								CanUserSort="False"
+								CanUserReorder="False"
+								IsReadOnly="True"/>
+						</DataGrid.Columns>
+					</DataGrid>
+				</Grid>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</Window>

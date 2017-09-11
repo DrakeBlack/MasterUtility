@@ -1,0 +1,15 @@
+C:\DrakeBlack\ProjectsAdmin\bin\Debug\ProjectsAdmin.exe.config
+C:\DrakeBlack\ProjectsAdmin\bin\Debug\ProjectsAdmin.exe
+C:\DrakeBlack\ProjectsAdmin\bin\Debug\ProjectsAdmin.pdb
+C:\DrakeBlack\ProjectsAdmin\obj\Debug\ProjectsAdmin.csprojResolveAssemblyReference.cache
+C:\DrakeBlack\ProjectsAdmin\obj\Debug\MainWindow.g.cs
+C:\DrakeBlack\ProjectsAdmin\obj\Debug\App.g.cs
+C:\DrakeBlack\ProjectsAdmin\obj\Debug\ProjectsAdmin_MarkupCompile.cache
+C:\DrakeBlack\ProjectsAdmin\obj\Debug\ProjectsAdmin_MarkupCompile.lref
+C:\DrakeBlack\ProjectsAdmin\obj\Debug\MainWindow.baml
+C:\DrakeBlack\ProjectsAdmin\obj\Debug\ProjectsAdmin.g.resources
+C:\DrakeBlack\ProjectsAdmin\obj\Debug\ProjectsAdmin.Properties.Resources.resources
+C:\DrakeBlack\ProjectsAdmin\obj\Debug\ProjectsAdmin.csproj.GenerateResource.Cache
+C:\DrakeBlack\ProjectsAdmin\obj\Debug\ProjectsAdmin.csproj.CoreCompileInputs.cache
+C:\DrakeBlack\ProjectsAdmin\obj\Debug\ProjectsAdmin.exe
+C:\DrakeBlack\ProjectsAdmin\obj\Debug\ProjectsAdmin.pdb

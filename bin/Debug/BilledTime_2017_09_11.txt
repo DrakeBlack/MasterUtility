@@ -1,0 +1,9 @@
+2017-09-11 08:54:59
+Level: Exception
+Sender: tabcontrol_Main_SelectionChanged.MainWindow
+Message: Cannot Change Selected Tab Item
+Exception: ProjectCodeAdmin_Loaded.MainWindow
+Exception: set_ProjectCodeAdmin_ProjectCodes.MainWindow
+Exception: datagrid_ProjectCodeAdmin_ProjectCodes_SelectionChanged.MainWindow
+Exception: Index was outside the bounds of the array.
+
